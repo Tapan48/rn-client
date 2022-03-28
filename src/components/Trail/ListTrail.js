@@ -3,6 +3,7 @@ import { Breadcrumb } from "antd";
 import { Link } from "react-router-dom";
 
 import trailApi from "../../api/trail";
+import "./listrail.scss";
 
 const ListTrail = () => {
   const [trails, setTrails] = useState([]);
@@ -11,11 +12,11 @@ const ListTrail = () => {
       setTrails(res);
     });
   }, []);
-
+  console.log(trails)
   return (
     <div className="App">
       <div className="container">
-        <h1>My trails</h1>
+
         <div className="breadcrumb">
           <Breadcrumb>
             <Breadcrumb.Item>
@@ -30,42 +31,57 @@ const ListTrail = () => {
             </Breadcrumb.Item>
           </Breadcrumb>
         </div>
-        <div className="row">
-          <div className="col">
-            <table className="table table-hover mt-5 table-sm">
-              <thead>
-                <tr>
-                  <th scope="col">#Trail id</th>
-                  <th scope="col">Title</th>
-                  <th scope="col">Your Visits</th>
-                  <th scope="col">Created at</th>
-                  <th scope="col">Public Visits</th>
-                </tr>
-              </thead>
-              <tbody>
-                {trails.map((trail, index) => {
+      
+       
+
+
+
+
+
+              <div className="trail-list">
+
+
+                <div className="trail-list-picture"></div>
+
+                <div className="trail-list-title"></div>
+
+
+                {trails.map((trail, index) => {console.log(trail)
                   return (
-                    <tr key={trail.trail_id}>
-                      <th scope="row">{trail.trail_id}</th>
-                      <td>
-                      <Link to={`/trail/${trail.trail_id}`}>{trail.title}</Link>
-                      </td>
-                      <td>
-                       {trail.visited}
-                      </td>
-                      <td>{trail.created_at}</td>
-                      <td>{trail.public_visits}</td>
-                    </tr>
+                  
+                  <div className="trail-list-item">
+                    
+                    
+                      <div className="trail-title">{trail.title}</div>
+                      <div className="date">{trail.created_at}</div>
+
+
+                  </div>
+                          
+
+ 
                   );
                 })}
-              </tbody>
-            </table>
+
+                
+
+                 
+
+          
+
+
+
+
+
+         
+          
           </div>
         </div>
       </div>
-    </div>
+   
   );
 };
+
 
 
 export default ListTrail;

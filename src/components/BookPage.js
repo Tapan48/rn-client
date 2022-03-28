@@ -24,7 +24,7 @@ function Book() {
         <div className="book-page-header-wrapper">
           <div className="book-page-header-text">Your books</div>
         </div>
-        <BookList />
+        <BookList/>
       </div>
     </div>
   );
